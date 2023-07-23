@@ -181,7 +181,7 @@ It simply logs out the given argument.\"
 
 (defun dispatch-action (name &optional args)
   (if (assoc name actions-alist)
-      (let ((action (cdr (assoc name actions-alist))))
+      (let ((action (alist-get name actions-alist)))
         (if args
             (funcall action args)
           (funcall action)))
@@ -238,7 +238,7 @@ Answer: The capital of France is Paris."))
   (append clog (list pair)))
 
 (defun last-message-content (alist)
-  (cdr (assoc 'content (cdar (last alist)))))
+  (alist-get 'content (cdar (last alist))))
 
 (defun query-and-add-to-log (clog query-pair)
   (let* ((query-alist (append-to-list clog query-pair))
@@ -283,7 +283,7 @@ Answer: The capital of France is Paris."))
                            `((role . "user")
                              (content . ,next-prompt))))
              (result (last-message-content result-clog)))
-        (setq clog (chatgpt-arcana--handle-token-overflow result-clog 1000 "summarize-each"))
+        (setq clog (chatgpt-arcana--handle-token-overflow result-clog 3000 "summarize-each"))
         (if (not result)
             (setq next-prompt "Observation: No output from previous action. Perhaps an error.")
           (if (string-match action-regex result)

@@ -80,3 +80,31 @@ Observation: "egnaL lraC"
 
 Answer: The reverse of "Carl Lange" is "egnaL lraC".
 ```
+
+
+## ChatGPT Arcana Eshell
+
+Sick of staring into the abyss of your terminal, trying to remember how to invoke `tar`? Don't despair - with ChatGPT-arcana, you can generate complex shell commands from natural language descriptions. Just type `spell tar this directory` and ChatGPT will insert the command to do what you want on the next line. All you need to do is press enter.
+
+```
+~/Desktop $ ls
+2023-03-31 12-44-10.mkv
+~/Desktop $ spell convert this mkv into mp4
+~/Desktop $ ffmpeg -i 2023-03-31\ 12-44-10.mkv 2023-03-31\ 12-44-10.mp4
+```
+
+But like they tell us all in wizard school: with great power comes great responsibility. You should still know what the command is doing - it absolutely 100% will with no qualms tell you how to destroy the universe (`rm -rf /`).
+
+Also, this command by default sends an `ls` of the current directory and the first 500 bytes of any named files to the ChatGPT API.
+
+## ChatGPT Arcana Autofix
+
+Automatically fix errors at point, flagged by `flycheck` or `flymake`, with `chatgpt-arcana-autofix`.
+
+## ChatGPT Arcana Commitmsg
+
+Automatically write commit messages. Who needs to do that manually anyways.
+
+`chatgpt-arcana-commitmsg` will insert the commit message at point, so use it in a magit `COMMIT_EDITMSG` buffer.
+
+This will send the current diff against HEAD and the last few commit messages to ChatGPT.
